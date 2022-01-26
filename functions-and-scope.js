@@ -18,11 +18,9 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
     /*
     * STAPPEN:
-    * De functie ontvangt een array als parameter.
     * We moeten tellen hoeveel mensen er Cum Laude slagen dus we maken een counter aan en zetten deze op 0
     * We lopen door de array en checken bij elk cijfer of het 8 of hoger is.
     * Als dat zo is dan tellen we 1 op bij de counter.
-    * We returnen de counter als we klaar zijn met de loop.
     * */
 
 let cumLaudeCount = 0;
