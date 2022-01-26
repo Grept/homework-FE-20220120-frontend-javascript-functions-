@@ -79,7 +79,6 @@ console.log(countCumLaudeGraduates([8, 9, 4, 6, 10]));
     * */
 
 let gradeSum = 0;
-
 for (let i = 0; i < grades.length; i++) {
     gradeSum += grades[i];
 }
