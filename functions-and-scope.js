@@ -14,14 +14,36 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
 
-/*
-* STAPPEN:
-* De functie ontvangt een array als parameter.
-* We moeten tellen hoeveel mensen er Cum Laude slagen dus we maken een counter aan en zetten deze op 0
-* We lopen door de array en checken bij elk cijfer of het 8 of hoger is.
-* Als dat zo is dan tellen we 1 op bij de counter.
-* We returnen de counter als we klaar zijn met de loop.
-* */
+// ---- Verwachte uitkomst: 6
+
+    /*
+    * STAPPEN:
+    * De functie ontvangt een array als parameter.
+    * We moeten tellen hoeveel mensen er Cum Laude slagen dus we maken een counter aan en zetten deze op 0
+    * We lopen door de array en checken bij elk cijfer of het 8 of hoger is.
+    * Als dat zo is dan tellen we 1 op bij de counter.
+    * We returnen de counter als we klaar zijn met de loop.
+    * */
+
+let cumLaudeCount = 0;
+for (let i = 0; i < grades.length; i++) {
+    if (grades[i] >= 8) {
+        cumLaudeCount++;
+    }
+}
+
+console.log(cumLaudeCount);
+
+
+/*  1b: Omschrijven tot een herbruikbare functie   */
+// Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
+// Zorg ervoor dat jouw functie ook werkt als we een andere array met eindcijfers willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
+// Log het antwoord in de terminal.
+
+// ---- Verwachte uitkomsten:
+// cumLaude(grades) geeft 6
+// cumLaude([6, 4, 5]) geeft 0
+// cumLaude([8, 9, 4, 6, 10]) geeft 3
 
 function countCumLaudeGraduates(gradeList) {
     let cumLaudeCount = 0;
@@ -35,21 +57,6 @@ function countCumLaudeGraduates(gradeList) {
 }
 
 console.log(countCumLaudeGraduates(grades));
-
-// ---- Verwachte uitkomst: 6
-
-
-/*  1b: Omschrijven tot een herbruikbare functie   */
-// Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
-// Zorg ervoor dat jouw functie ook werkt als we een andere array met eindcijfers willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
-// Log het antwoord in de terminal.
-
-// ---- Verwachte uitkomsten:
-// cumLaude(grades) geeft 6
-// cumLaude([6, 4, 5]) geeft 0
-// cumLaude([8, 9, 4, 6, 10]) geeft 3
-
-//De functie werkt al.
 console.log(countCumLaudeGraduates([6, 4, 5]));
 console.log(countCumLaudeGraduates([8, 9, 4, 6, 10]));
 
@@ -64,25 +71,24 @@ console.log(countCumLaudeGraduates([8, 9, 4, 6, 10]));
 // * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
 // Log het antwoord in de terminal.
 
-/*
-* STAPPEN:
-* De gemiddelde waarde berekenen we door alle cijfers bij elkaar op te tellen en te delen door het aantal cijfers.
-* De cijfers en het aantal cijfers moeten verzameld worden.
-* We lopen. We checken de lengte van de loop met array.lenght property.
-* */
+// ---- Verwachte uitkomst: 6.642857142857143
 
-function getAverageGrade(gradeList){
-    let gradeSum = 0;
-    for (let i = 0; i < gradeList.length; i++){
-        gradeSum += gradeList[i];
-    }
+    /*
+    * STAPPEN:
+    * De gemiddelde waarde berekenen we door alle cijfers bij elkaar op te tellen en te delen door het aantal cijfers.
+    * De cijfers en het aantal cijfers moeten verzameld worden.
+    * We lopen. We checken de lengte van de loop met array.lenght property.
+    * */
 
-    return (gradeSum / gradeList.length).toFixed(2);
+let gradeSum = 0;
+
+for (let i = 0; i < grades.length; i++) {
+    gradeSum += grades[i];
 }
 
-console.log(getAverageGrade(grades));
+let average = gradeSum / grades.length;
 
-// ---- Verwachte uitkomst: 6.642857142857143
+console.log(average);
 
 
 /* 2b: Omschrijven tot een herbruikbare functie */
@@ -95,9 +101,18 @@ console.log(getAverageGrade(grades));
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+function getAverageGrade(gradeList) {
+    let gradeSum = 0;
+    for (let i = 0; i < gradeList.length; i++) {
+        gradeSum += gradeList[i];
+    }
+
+    return (gradeSum / gradeList.length).toFixed(2);
+}
+
+console.log(getAverageGrade(grades));
 console.log(getAverageGrade([6, 4, 5]));
 console.log(getAverageGrade([8, 9, 4, 6, 10]));
-
 
 
 /* 2c: Afronden op twee decimalen */
@@ -117,18 +132,22 @@ console.log(getAverageGrade([8, 9, 4, 6, 10]));
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan opslaan?
 // Log het antwoord in de terminal.
 
-function getHighestGrade(gradeList) {
-    let highestGrade = 0;
-    for (let i = 0; i < gradeList.length; i++){
-        if(gradeList[i] > highestGrade) {
-            highestGrade = gradeList[i];
-        }
-    }
+    /*
+    * STAPPEN:
+    * We maken een variable aan genaamd highestGrade en geven deze de waarde 0.
+    * We doorlopen de lijst dmv een for-loop.
+    * Bij iedere waarde die we langslopen checken we of deze groter of kleiner is dan de variable highestGrade.
+    * Als de waarde in de lijst hoger is dan highestGrade dan wijzen we deze toe aan highestGrade.
+    * */
 
-    return highestGrade;
+let highestGrade = 0;
+for (let i = 0; i < grades.length; i++) {
+    if (grades[i] > highestGrade) {
+        highestGrade = grades[i];
+    }
 }
 
-console.log(getHighestGrade(grades));
+console.log(highestGrade);
 
 // ---- Verwachte uitkomst: 9
 
@@ -143,5 +162,17 @@ console.log(getHighestGrade(grades));
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
 
+function getHighestGrade(gradeList) {
+    let highestGrade = 0;
+    for (let i = 0; i < gradeList.length; i++) {
+        if (gradeList[i] > highestGrade) {
+            highestGrade = gradeList[i];
+        }
+    }
+
+    return highestGrade;
+}
+
+console.log(getHighestGrade(grades));
 console.log(getHighestGrade([6, 4, 5]));
 console.log(getHighestGrade([8, 9, 4, 6, 10]));
